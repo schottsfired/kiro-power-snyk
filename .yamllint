@@ -1,0 +1,7 @@
+---
+extends: relaxed
+
+rules:
+  line-length:
+    max: 300
+    allow-non-breakable-words: true

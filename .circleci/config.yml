@@ -1,0 +1,28 @@
+---
+version: 2.1
+
+orbs:
+  deploy: snyk/deploy@4
+  pre-commit: snyk/pre-commit@0
+  validate: snyk/validate@0
+  prodsec: snyk/prodsec-orb@1
+
+workflows:
+  CI:
+    jobs:
+      - prodsec/secrets-scan:
+          name: Scan repository for secrets
+          context:
+            - snyk-bot-slack
+          channel: alerts-cloud-core
+  CD:
+    jobs:
+      - deploy/deploy: &deploy-defaults
+          name: Deploy to Infra Staging cluster
+          context:
+            - snyk-deploy-argo-staging-aws
+            - tag-changer-deployer-token
+          filters:
+            branches:
+              only:
+                - main

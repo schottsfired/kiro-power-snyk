@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  tags:
+    - polaris-application
+  name: <xyz>
+  description:
+    Tool to perform <xyz>
+  annotations:
+    github.com/project-slug: snyk/<xyz>
+    github.com/team-slug: snyk/cloud-core
+    snyk.io/jira-prefix: CORE
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - title: Team's Ask Channel
+      icon: message
+      url: https://snyk.slack.com/channels/ask-infra
+spec:
+  owner: cloud-core
+  type: snyk-deployed-fedramp
+  lifecycle: "-"
